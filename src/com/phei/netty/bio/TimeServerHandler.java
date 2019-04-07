@@ -23,43 +23,43 @@ import java.net.Socket;
 
 /**
  * @author Administrator
- * @date 2014年2月14日
  * @version 1.0
+ * @date 2014年2月14日
  */
 public class TimeServerHandler implements Runnable {
 
     private Socket socket;
 
     public TimeServerHandler(Socket socket) {
-	this.socket = socket;
+        this.socket = socket;
     }
 
     @Override
     public void run() {
-	BufferedReader in = null;
-	try {
-	    in = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
-	    while (true) {
-			String message = in.readLine();
-			if (message != null) {
-				System.out.println("服务端收到消息:"+message);
-			}
-		}
-	} catch (Exception e) {
-	    if (in != null) {
-			try {
-				in.close();
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
-	    }
-	    if (this.socket != null) {
-			try {
-				this.socket.close();
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
-	    }
-	}
+        BufferedReader in = null;
+        try {
+            in = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
+            while (true) {
+                String message = in.readLine();
+                if (message != null) {
+                    System.out.println("服务端收到消息:" + message);
+                }
+            }
+        } catch (Exception e) {
+            if (in != null) {
+                try {
+                    in.close();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            }
+            if (this.socket != null) {
+                try {
+                    this.socket.close();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
     }
 }

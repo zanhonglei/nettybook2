@@ -21,8 +21,8 @@ import java.net.Socket;
 
 /**
  * @author lilinfeng
- * @date 2014年2月14日
  * @version 1.0
+ * @date 2014年2月14日
  */
 public class TimeServer {
 
@@ -31,20 +31,20 @@ public class TimeServer {
      * @throws IOException
      */
     public static void main(String[] args) throws IOException {
-	int port = 8080;
-	ServerSocket server = null;
-	try {
-	    server = new ServerSocket(port);
-	    System.out.println("Socket通信服务启动: " + port);
-	    Socket socket = null;
-	    while (true) {
-			socket = server.accept();
-			new Thread(new TimeServerHandler(socket)).start();//此处会有什么问题？
-	    }
-	} finally {
-	    if (server != null) {
-			server.close();
-	    }
-	}
+        int port = 8080;
+        ServerSocket server = null;
+        try {
+            server = new ServerSocket(port);
+            System.out.println("Socket通信服务启动: " + port);
+            Socket socket = null;
+            while (true) {
+                socket = server.accept();
+                new Thread(new TimeServerHandler(socket)).start();//此处会有什么问题？
+            }
+        } finally {
+            if (server != null) {
+                server.close();
+            }
+        }
     }
 }
